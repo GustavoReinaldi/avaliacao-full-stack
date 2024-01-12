@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="left-side">
+    <app-list-transfers [transferInputList]="transferList" (onDoubleClick)="deleteSchedule($event)"></app-list-transfers>
+  </div>
+  <div class="right-side">
+    <app-transfer-form (newTransferEmitter)="createNewTransfer($event)"></app-transfer-form>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<form [formGroup]="transferForm" id="transfer-form" class="custom-form" (ngSubmit)="createTransfer()">
+    <div id="origin-account-group" class="input-group">
+        <label for="origin-account">Conta de Origem</label>
+        <input class="input-form" type="text" name="origin-account" mask="00000-0" (blur)="simulateFees()" maxlength="6" id="origin-account" formControlName="originAccount" >
+    </div>
+    <div id="destination-account-group" class="input-group">
+        <label for="destination-account">Conta de Destino</label>
+        <input class="input-form" type="text" name="destination-account" mask="00000-0" (blur)="simulateFees()" maxlength="6"
+            id="destination-account" formControlName="destinationAccount">
+    </div>
+    <div class="input-group">
+        <label for="transfer-value">Valor</label>
+        <input class="input-form" type="text"
+        name="transfer-value"
+        prefix="R$ "
+        mask="separator.2" 
+        thousandSeparator="."
+        decimalMarker=","
+        (blur)="simulateFees()" 
+        id="transfer-value" 
+        formControlName="transferAmount">
+    </div>
+    <div class="input-group">
+        <label for="transfer-date">Data da Transferência</label>
+        <input class="input-form" type="date" value="today" name="transfer-date" (blur)="simulateFees()" id="transfer-date" formControlName="scheduledDate">
+    </div>
+    <div id="simulated-transfer">
+        <h3>Simulação de valores:</h3>
+        <div>
+            <span class="left-text">{{moneyMask(simulatedTransfer.valueToTransfer)}}</span>
+            <span class="right-text">Valor</span>
+        </div>
+        <div>
+            <span class="left-text">{{moneyMask(simulatedTransfer.taxesTransfer)}}</span>
+            <span class="right-text">Taxas</span>
+        </div>
+        <div>
+            <span class="left-text">{{moneyMask(simulatedTransfer.subTotal)}}</span>
+            <span class="right-text">Subtotal</span>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <button id="btn-refresh" type="button" (click)="simulateFees()" [disabled]="transferForm.controls['scheduledDate'].invalid || transferForm.controls['transferAmount'].invalid"  class="btn">REFAZER CÁLCULO</button>
+        <button id="btn-submit" type="submit" class="btn btn-success" 
+        [disabled]="!transferForm.valid">TRANSFERIR</button>
+    </div>
+</form>

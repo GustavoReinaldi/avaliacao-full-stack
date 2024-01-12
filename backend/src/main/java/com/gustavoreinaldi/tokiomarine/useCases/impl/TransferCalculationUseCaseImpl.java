@@ -2,6 +2,7 @@ package com.gustavoreinaldi.tokiomarine.useCases.impl;
 
 import com.gustavoreinaldi.tokiomarine.exceptions.InvalidArgumentsException;
 import com.gustavoreinaldi.tokiomarine.useCases.TransferCalculationUseCase;
+import com.gustavoreinaldi.tokiomarine.utils.NumberUtils;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class TransferCalculationUseCaseImpl implements TransferCalculationUseCas
         else if(amountToTransfer > 2000) valueTaxed = calculateTaxTypeC(differenceOfDays, amountToTransfer);
         else throwsInvalidValuesException();
 
-        return BigDecimal.valueOf(valueTaxed).setScale(2, RoundingMode.CEILING).doubleValue();
+        return NumberUtils.twoDecimalsOnly(valueTaxed);
     }
 
     private Double calculateTaxTypeA(long differenceOfDays, double amountToTax){

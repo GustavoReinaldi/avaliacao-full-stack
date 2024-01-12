@@ -1,0 +1,27 @@
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    #btn-refresh {
+        margin: 10px 0;
+    }
+}
+
+#simulated-transfer {
+    margin: 15px 0 10px;
+    font-size: 11px;
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span.left-text {
+            text-align: start;
+        }
+        span.right-text {
+            float: right;
+            text-align: end;
+            font-weight: 600;
+        }
+    }
+}

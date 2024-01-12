@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Data Transação</th>
+        <th>Data Agendamento</th>
+        <th>Conta Origem</th>
+        <th>Conta Destino</th>
+        <th>Valor</th>
+        <th>Taxas</th>
+    </tr>
+    <tr *ngFor="let transfer of transferInputList" (dblclick)="deleteRow(transfer.transferId)">
+        <td>{{transfer.transferId}}</td>
+        <td>{{transfer.transferDate | mask : '0000/00/00'}}</td>
+        <td>{{transfer.scheduledDate | mask : '0000/00/00'}}</td>
+        <td>{{transfer.originAccount  | mask: '00000-0'}}</td>
+        <td>{{transfer.destinationAccount   | mask: '00000-0'}}</td>
+        <td>{{moneyMask(transfer.transferAmount)}}</td>
+        <td>{{moneyMask(transfer.transferTax)}}</td>
+    </tr>
+</table>

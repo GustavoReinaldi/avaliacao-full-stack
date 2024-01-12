@@ -4,6 +4,7 @@ import com.gustavoreinaldi.tokiomarine.dto.input.TransferInputDTO;
 import com.gustavoreinaldi.tokiomarine.entities.TransferEntity;
 import com.gustavoreinaldi.tokiomarine.repositories.TransferRepository;
 import com.gustavoreinaldi.tokiomarine.useCases.TransferCalculationUseCase;
+import com.gustavoreinaldi.tokiomarine.utils.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class CreateTransferenceService {
                         transferData.getTransferAmount());
         var newTransfer = TransferEntity.builder()
                 .transferDate(LocalDate.now())
-                .transferTax(BigDecimal.valueOf(valueWithTax - transferData.getTransferAmount()).setScale(2, RoundingMode.CEILING).doubleValue())
+                .transferTax(NumberUtils.twoDecimalsOnly(valueWithTax - transferData.getTransferAmount()))
                 .transferAmount(transferData.getTransferAmount())
                 .destinationAccount(transferData.getDestinationAccount())
                 .originAccount(transferData.getOriginAccount())
