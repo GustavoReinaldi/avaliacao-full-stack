@@ -15,3 +15,11 @@ Foram utilizadas essas versões por conta do suporte, e dos materias/documentaç
 - Simular agendamentos de transferências bancárias clicando no botão 'FAZER CÁLCULO'
 - Listar agendamentos já feitos ordenado por data de agendamento (menor para a maior)
 - Deletar agendamentos (clicando duas vezes sobre ele)
+
+### Imagens das Interfaces (Frontend/Backend)
+
+#### Frontend 
+![Frontend](https://github.com/GustavoReinaldi/avaliacao-full-stack/blob/main/imagens/Frontend.png)
+
+#### Backend(Swagger)
+![Swagger](https://github.com/GustavoReinaldi/avaliacao-full-stack/blob/main/imagens/Swagger.png)
